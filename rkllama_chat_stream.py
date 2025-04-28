@@ -1,0 +1,12 @@
+from llama_index.llms.ollama import Ollama
+
+#  Khởi tạo
+ollama = Ollama(model="Qwen2.5-7B-Instruct-rk3588-w8a8-opt-0-hybrid-ratio-0.0", base_url="http://127.0.0.1:8080", request_timeout=500)
+
+# Câu hỏi thử nghiệm
+question = "Bạn là ai?"
+
+# Trả lời dạng streaming
+for completion_response in ollama.stream_complete(question):
+    print(completion_response.delta, end='')  # Prints processed text as it's received
+print("\n")
